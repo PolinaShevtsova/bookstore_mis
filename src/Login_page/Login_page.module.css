@@ -1,0 +1,83 @@
+.DIV{
+   height: 100%;
+   align-items: center;
+   display: flex;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(212, 212, 212);
+  border-radius: 32px;
+  width: 500px;
+  height: 500px;
+  position: relative;
+  box-sizing: border-box;
+  border: solid 2px #5D3C64
+}
+
+.pEntrance{
+  margin-top: 70px;
+  font-size: 30px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.InputContainer p{
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  height: 23px;
+  margin-top: 15px;
+}
+
+.InputContainer input{
+  width: 300px;
+  height: 40px;
+  border-radius: 24px;
+  border: none;
+  background-color: #efeeee;
+  padding-inline: 0;
+  padding-block: 0;
+  outline: none;
+  font-size: 18px;           
+  color: #222;                
+  font-family: "Inter", sans-serif; 
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+  font-weight: 300;
+}
+
+.InputContainer input:last-child {
+  margin-bottom: 0;
+}
+
+.ButtonLogin{
+  width: 300px;
+  height: 42px;
+  border-radius: 24px;
+  background-color: #5D3C64;
+  color: white;
+  margin-top: 25px;
+  border: none;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 40px;
+}
+
+.Error{
+
+  color: #e13939;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+
+}
+
+.Error:last-child{
+  margin-bottom: 0;
+}

@@ -1,0 +1,58 @@
+.LineContainer{
+   width: 100%;
+   display: flex;
+   gap: 40px;
+   align-items: center;
+   margin-bottom: 18px;
+}
+
+.LineContainer:last-child{
+   margin-bottom: 6px;
+}
+
+.LineContainer:first-child{
+   margin-top: 6px;
+}
+
+.Number {
+   width: 36px;
+   height: 36px;
+   background-color: white;
+   font-family: "Inter", sans-serif;
+   border-radius: 50%;
+   font-size: 24px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border: solid 4px #5D3C64;
+}
+.Input{
+   width: 149px;
+   height: 31px;
+   border-radius: 24px;
+   border: none;
+   background-color: #efeeee;
+   padding-inline: 0;
+   padding-block: 0;
+   outline: none;
+   font-size: 16px;           
+   color: #222;                
+   font-family: "Inter", sans-serif; 
+   padding-left: 16px;
+   padding-right: 16px;
+   box-sizing: border-box;
+   font-weight: 300;
+}
+
+.Button{
+   color: white;
+   font-size: 16px;
+   font-family: "Inter", sans-serif;
+   width: 160px;
+   height: 33px;
+   border: none;
+   border-radius: 25px;
+   background-color: #5D3C64;
+   cursor: pointer;
+   text-align: center;
+}
