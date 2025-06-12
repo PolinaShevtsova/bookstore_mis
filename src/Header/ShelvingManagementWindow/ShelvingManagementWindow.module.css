@@ -1,0 +1,116 @@
+.overlay {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100vw;
+   height: 100vh;
+   background: rgba(0,0,0,0.4);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 1000;
+ }
+ 
+ .modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 32px;
+  width: 550px;
+  position: relative;
+  box-sizing: border-box;
+}
+ 
+ .closeBtn {
+   position: absolute;
+   top: 30px;
+   right: 30px;
+   width: 60px;
+   height: 60px;
+   border: none;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: white;
+   transform: rotate(45deg);
+ }
+
+ .closeBtn::before {
+   content: '';
+   background-image: url('close.svg');
+   background-size: contain; 
+   background-repeat: no-repeat;
+   background-position: center;
+   transform: rotate(45deg);
+   width: 70px; 
+   height: 70px;
+   position: absolute;
+ }
+
+ .nameWindow{
+   font-family: "Inter", sans-serif;
+   font-size: 29px;
+   font-weight: 500;
+   margin-top: 43px;
+ }
+
+ .ContentScroll{
+   width: 443px;
+   max-height: 370px;
+   overflow-y: auto;
+   overflow-x: hidden;
+   box-sizing: border-box;
+   padding-right: 30px;
+ }
+
+ .Content{
+   width: 433px;
+ }
+
+ .ContentScroll::-webkit-scrollbar {
+   width: 10px;
+ }
+ 
+ .ContentScroll::-webkit-scrollbar-thumb {
+   background: #d1d5db;
+   border-radius: 8px;
+   border: 2px solid white; 
+ }
+ 
+ .ContentScroll::-webkit-scrollbar-track {
+   background: transparent;
+   margin: 4px 0;
+   border-radius: 8px;
+ }
+
+ .nameCol{
+   margin-top: 25px;
+   font-family: "Inter", sans-serif;
+   font-size: 16px;
+   font-weight: 400;
+   margin-left: 120px;
+   margin-bottom: 8px;
+ }
+
+ .ButtonsContainer{
+   display: flex;
+   margin-top: 35px;
+   width: 440px;
+   gap: 80px;
+   margin-bottom: 30px;
+ }
+
+ .Button{
+   color: white;
+   font-size: 16px;
+   font-family: "Inter", sans-serif;
+   width: 180px;
+   height: 35px;
+   border: none;
+   border-radius: 25px;
+   background-color: #5D3C64;
+   cursor: pointer;
+   text-align: center;
+}
