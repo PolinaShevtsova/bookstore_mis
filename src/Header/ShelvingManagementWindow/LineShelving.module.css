@@ -3,7 +3,6 @@
    display: flex;
    gap: 40px;
    align-items: center;
-   margin-bottom: 18px;
 }
 
 .LineContainer:last-child{
@@ -54,5 +53,30 @@
    border-radius: 25px;
    background-color: #5D3C64;
    cursor: pointer;
+   text-align: center;
+}
+
+.Warning{
+   justify-content: flex-end;
+   width: 100%;
+   display: flex;
+}
+
+.Warningp{
+   color: rgb(219, 90, 90);
+   font-size: 12px;
+   font-family: "Inter", sans-serif;
+   margin-right: 7px;
+}
+
+.basketButtonDisabled{
+   background-color: #5d5160;
+   width: 160px;
+   height: 33px;
+   border-radius: 25px;
+   color: white;
+   font-family: "Inter", sans-serif;
+   font-size: 16px;
+   border: none;
    text-align: center;
 }

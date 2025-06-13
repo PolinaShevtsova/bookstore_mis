@@ -1,5 +1,6 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
+
 
 class Author(models.Model):
     author_last_name = models.CharField(max_length=30)
@@ -7,14 +8,14 @@ class Author(models.Model):
     author_patronymic = models.CharField(max_length=30, null=True, blank=True)
 
 class Category(models.Model):
-    title = models.CharField(max_length=30)
+    category_name = models.CharField(max_length=30)
 
 class Book(models.Model):
     title = models.CharField(max_length=50)
     publishing = models.CharField(max_length=100)
     price = models.FloatField()
     number_of_copies = models.IntegerField()
-    description = models.CharField(max_length=300, null=True, blank=True)
+    description = models.CharField(max_length=800, null=True, blank=True)
     status = models.CharField(max_length=50)
     keywords = models.CharField(max_length=300, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)

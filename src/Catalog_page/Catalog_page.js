@@ -244,7 +244,7 @@ function Catalog_page()
   async function editBooks() {
     setLoading(true);
     try {
-      const response = await FetchWithAuth(`http://127.0.0.1:8000/api/books/sorted/${selectedCategory}`);
+      const response = await FetchWithAuth(`http://127.0.0.1:8000/api/books/sorted/?category=${selectedCategory}`);
       const data = await response.json();
       setBooks(data);
     } catch (err) {
@@ -263,7 +263,9 @@ function Catalog_page()
    };
 
    useEffect(() => {
-      editBooks();
+      if (selectedCategory !== null) {
+        editBooks();
+      }
    }, [selectedCategory]);
 
   if (loading)

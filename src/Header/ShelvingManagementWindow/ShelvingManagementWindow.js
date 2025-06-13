@@ -5,13 +5,20 @@ import LineShelving from "./LineShelving";
 
 function ShelvingManagementWindow ({isOpen, onClose, obj})
 {
-   const [shelves, setShelves] = useState(obj);
+    const [shelves, setShelves] = useState([]);
+
+   useEffect(() => {
+      if (obj) {
+         setShelves(obj);
+      }
+   }, [obj]);
 
    const addShelf = () => {
       const lastShelf = shelves[shelves.length - 1];
       const newShelf = {
          id: lastShelf ? lastShelf.id + 1 : 1,
          count: 0,
+          has_books: false
    };
       setShelves([...shelves, newShelf]);
    };
@@ -32,6 +39,9 @@ function ShelvingManagementWindow ({isOpen, onClose, obj})
             method: 'PUT',
             body: JSON.stringify(shelves),
          });
+         if (response && response.ok) {
+          onClose();
+        }
       } catch (error) {
          console.error('Произошла ошибка', error);
       }

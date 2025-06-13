@@ -39,7 +39,7 @@ function AddBookWindow({isOpen, onClose, obj})
    const fetchDropdownData = async () => {
       // Авторы
       try {
-        const response = await FetchWithAuth('http://127.0.0.1:8000/catalog/authors/');
+        const response = await FetchWithAuth('http://127.0.0.1:8000/api/authors/');
         const authors = await response.json();
         setLast_name(authors.last_names || []);
         setFirst_names(authors.first_names || []);
@@ -50,7 +50,7 @@ function AddBookWindow({isOpen, onClose, obj})
   
       // Категории
       try {
-        const response = await FetchWithAuth('http://127.0.0.1:8000/catalog/categories/');
+        const response = await FetchWithAuth('http://127.0.0.1:8000/api/categories/');
          const categories = await response.json();
         setGenre(categories || []);
       } catch (error) {
@@ -476,7 +476,7 @@ function AddBookWindow({isOpen, onClose, obj})
                         style={{
                            color: selectedDiscount ? "#000" : "#9b9b9b",
                         }}>
-                        {selectedDiscount ? selectedDiscount.name : "Выберите скидку"}
+                        {selectedDiscount ? selectedDiscount.name : "Выберите статус"}
                      </button>
                      {isOpenDropDownDiscount && (
                         <div className={styles.DropDown}>

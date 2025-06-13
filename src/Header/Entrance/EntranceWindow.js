@@ -25,11 +25,11 @@ function EntranceWindow({isOpen, onClose, obj})
                <table className={styles.table}>
                             <thead>
                                 <tr>
-                                    <th style={{width: '40px',  border: '2px solid #5D3C64'}}>ID</th>
-                                    <th style={{width: '140px',  border: '2px solid #5D3C64'}}>Дата и время</th>
-                                    <th style={{width: '170px',  border: '2px solid #5D3C64'}}> Название книги</th>
-                                    <th style={{width: '270px',  border: '2px solid #5D3C64'}}>Авторы книги</th>
-                                    <th style={{width: '150px',  border: '2px solid #5D3C64'}}>Количество экземпляров</th>
+                                    {/*<th style={{width: '40px',  border: '2px solid #5D3C64'}}>ID</th>*/}
+                                    <th style={{width: '150px',  border: '2px solid #5D3C64'}}>Дата и время</th>
+                                    <th style={{width: '180px',  border: '2px solid #5D3C64'}}> Название книги</th>
+                                    <th style={{width: '280px',  border: '2px solid #5D3C64'}}>Авторы книги</th>
+                                    <th style={{width: '160px',  border: '2px solid #5D3C64'}}>Количество экземпляров</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,7 +37,7 @@ function EntranceWindow({isOpen, onClose, obj})
                                     <React.Fragment key={entrance.id}>
                                         {entrance.books.map((bookItem, index) => (
                                             <tr key={index}>
-                                                {index === 0 && <td style={{width: '40px',textAlign: 'center', border: '2px solid #5D3C64'}} rowSpan={entrance.books.length}>{entrance.id}</td>}
+                                                {/*{index === 0 && <td style={{width: '40px',textAlign: 'center', border: '2px solid #5D3C64'}} rowSpan={entrance.books.length}>{entrance.id}</td>}*/}
                                                 {index === 0 && <td style={{width: '140px',textAlign: 'center', border: '2px solid #5D3C64'}} rowSpan={entrance.books.length}>{formatDateTime(entrance.dateTime)}</td>}
                                                 <td style={{width: '170px',textAlign: 'center', border: '2px solid #5D3C64'}}>{bookItem.book.title}</td>
                                                 <td style={{width: '270px',textAlign: 'center', border: '2px solid #5D3C64'}}>{formatAuthors(bookItem.book.authors)}</td>

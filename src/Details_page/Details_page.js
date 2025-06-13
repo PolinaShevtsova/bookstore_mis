@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import BookInfo from './BookInfo/BookInfo';
 import Header from '../Header/Header';
 import RelatedBooks from './RelatedBooks/RelatedBooks';
+import FetchWithAuth from '../Login_page/FetchWithAuth';
 // const book = 
 //    {
 //       id: 1,
@@ -182,7 +183,7 @@ function Details_page()
         setLoading(true);
         try {
           let url = `http://127.0.0.1:8000/api/books/${id}/`;
-          const response = await fetch(url);
+          const response = await FetchWithAuth(url);
           const data = await response.json();
           setBook(data.book); 
           setRelatedBooks(data.similar_books); 

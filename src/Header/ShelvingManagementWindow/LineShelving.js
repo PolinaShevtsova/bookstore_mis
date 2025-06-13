@@ -9,18 +9,24 @@ function LineShelving({ shelf, onDelete, onUpdate })
    };
 
    return (
-      <div className={styles.LineContainer}>
-         <div className={styles.Number}>{shelf.id}</div>
-         <input 
-            type="number"
-            className={styles.Input}
-            placeholder="Вместимость"
-            value={shelf.count}
-            onChange={handleCountChange}
-            min="0"
-         />
-         <button onClick={() => onDelete(shelf.id)} className={styles.Button}>Удалить</button>
-      </div>
+       <div style={{marginBottom: '18px'}}>
+           <div className={styles.LineContainer}>
+               <div className={styles.Number}>{shelf.id}</div>
+               <input
+                   type="number"
+                   className={styles.Input}
+                   placeholder="Вместимость"
+                   value={shelf.count}
+                   onChange={handleCountChange}
+                   min="0"
+               />
+               <button onClick={() => onDelete(shelf.id)}
+                       disabled={shelf.has_books == false ? false : true} className={shelf.has_books == false ? styles.Button : styles.basketButtonDisabled}>Удалить
+               </button>
+           </div>
+           {shelf.has_books ?
+               <div className={styles.Warning}><p className={styles.Warningp}> На стеллаже есть книги!</p></div> : <></>}
+       </div>
    );
 }
 

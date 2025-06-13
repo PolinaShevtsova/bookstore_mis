@@ -44,7 +44,7 @@ function BookInfo({Book})
                   <div className={styles.attributeValue}>
                      <p>{Book.title}</p>
                      <p>{Book.status}</p>
-                     <p>{Book.category.title}</p>
+                     <p>{Book.category.category_name}</p>
                      <p>{Book.publishing}</p>
                      {Book.authors.map((author, index) => (
                         <p key={index}>

@@ -31,3 +31,27 @@ class BookListView(ListAPIView):
                 status=status.HTTP_200_OK
             )
         return super().get(request, *args, **kwargs)
+
+class SortedBooksView(ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        category_id = self.request.query_params.get('category')
+        if category_id:
+            queryset = queryset.filter(category_id=category_id)
+
+        return queryset
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        if not queryset.exists():
+            return Response(
+                {"message": "Книги не найдены"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        serializer = self.get_serializer(queryset, many=True, context={'request': request})
+        return Response(serializer.data, status=status.HTTP_200_OK)

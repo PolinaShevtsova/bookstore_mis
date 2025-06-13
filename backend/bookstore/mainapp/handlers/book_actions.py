@@ -1,3 +1,5 @@
+from datetime import timezone
+
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
@@ -22,9 +24,9 @@ class AuthorListView(ListAPIView):
 
         serializer = self.get_serializer(queryset, many=True)
 
-        last_names = sorted({author.get('last_name') for author in serializer.data if author.get('last_name')})
-        first_names = sorted({author.get('first_name') for author in serializer.data if author.get('first_name')})
-        patronymics = sorted({author.get('patronymic') for author in serializer.data if author.get('patronymic')})
+        last_names = sorted({author.get('author_last_name') for author in serializer.data if author.get('author_last_name')})
+        first_names = sorted({author.get('author_first_name') for author in serializer.data if author.get('author_first_name')})
+        patronymics = sorted({author.get('author_patronymic') for author in serializer.data if author.get('author_patronymic')})
 
         return Response({
             "last_names": last_names,
@@ -43,16 +45,25 @@ class BooksView(APIView):
             if serializer.is_valid():
                 book = serializer.save()
 
-                # ➕ Добавляем запись о поступлении
                 entrance = Entrance.objects.create(
                     dateTime=timezone.now(),
-                    user=request.user  # Продавец из токена авторизации
+                    user=request.user
                 )
 
                 Book_entrance.objects.create(
                     book=book,
                     entrance=entrance,
-                    quantity=book.number_of_copies  # Кол-во как в добавленной книге
+                    quantity=book.number_of_copies
+                )
+
+                storage = Storage.objects.filter(name="Склад").first()
+                if not storage:
+                    return Response({"error": "Склад не найден"}, status=status.HTTP_400_BAD_REQUEST)
+
+                Book_Storage.objects.create(
+                    book=book,
+                    storage=storage,
+                    quantity=book.number_of_copies
                 )
 
                 return Response("Книга успешно добавлена", status=status.HTTP_201_CREATED)

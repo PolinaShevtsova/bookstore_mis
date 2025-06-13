@@ -17,7 +17,7 @@ from django.conf import settings
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'title']
+        fields = ['id', 'category_name']
 
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -45,12 +45,9 @@ class BookSerializer(serializers.ModelSerializer):
         ]
 
     def get_cover_image(self, obj):
-        request = self.context.get('request')
+        # request = self.context.get('request')
         if obj.cover_image:
-            return request.build_absolute_uri(obj.cover_image.url)
-        elif obj.cover_image:
-            return obj.cover_image.url
-        return None
+            return f'{settings.SITE_DOMAIN}{obj.cover_image.url}'
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
@@ -204,13 +201,16 @@ class EntranceDetailSerializer(serializers.ModelSerializer):
 
 #Storage
 class StorageOnlySerializer(serializers.ModelSerializer):
+    has_books = serializers.SerializerMethodField()
     class Meta:
         model = Storage
-        fields = ['id', 'count']
+        fields = ['id', 'count', 'has_books']
 
     def create(self, validated_data):
         validated_data['name'] = 'Стеллаж'  # Проставляем по умолчанию
         return super().create(validated_data)
+    def get_has_books(self, obj):
+        return obj.book_storage_set.exists()
 
 class StorageSerializer(serializers.ModelSerializer):
     class Meta:

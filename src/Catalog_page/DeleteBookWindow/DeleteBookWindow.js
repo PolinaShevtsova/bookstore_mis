@@ -1,9 +1,11 @@
 import React, {useState, useRef, useEffect} from "react";
 import styles from './DeleteBookWindow.module.css';
 import FetchWithAuth from "../../Login_page/FetchWithAuth";
+import { Link, useNavigate } from "react-router-dom";
 
 function DeleteBookWindow ({isOpen, onClose, obj})
 {
+    const navigate = useNavigate();
    if (!isOpen) return null;
 
    async function handleDelete() {
@@ -12,8 +14,10 @@ function DeleteBookWindow ({isOpen, onClose, obj})
         `http://127.0.0.1:8000/api/books/delete/${obj.id}/`,
         { method: 'DELETE' }
       );
+
       if (response.ok) {
          onClose();
+         navigate("/Catalog");
          window.location.reload();
       } else {
         alert('Ошибка при удалении');

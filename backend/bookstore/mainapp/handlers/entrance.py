@@ -8,7 +8,7 @@ class EntranceListView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
-        queryset = Entrance.objects.all()
+        queryset = Entrance.objects.all().order_by('-dateTime')
         if not queryset.exists():
             return Response(
                 {"message": "Списания не найдены"},

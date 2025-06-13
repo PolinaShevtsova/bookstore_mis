@@ -426,14 +426,14 @@ function DropDownMenu() {
 
                <button className={styles.Button} 
                onClick={() => {fetchEntranceGet()}}
-               >Размещение книг</button>
+               >Поступления книг</button>
                <EntranceWindow isOpen={entranceModalOpen} onClose={() => {setEntranceModalOpen(false); 
                     setEntranceData(null);
                   }} obj={entranceData}/>
 
                <button className={styles.Button} 
                onClick={() => {fetchPlacementGet()}}
-               >Поступления книг</button>
+               >Размещение книг</button>
                <PlacementWindow isOpen={placementModalOpen} onClose={() => {setPlacementModalOpen(false); 
                   setPlacementData(null);
                   }} obj={placementData}/>
